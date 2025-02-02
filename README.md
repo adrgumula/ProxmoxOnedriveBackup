@@ -8,12 +8,12 @@ I acknowledge that the solution presented is far from being perfect, but it work
 
 # What you need?
 - Proxmox server 8+ running(did not check it this work on the 7th version)
-- Proxmox'S server IP adress (local) ***PROXMOX_IP*** for example _192.168.10.50_
+- Proxmox'S server IP adress (local) ***PROXMOX_IP*** for example _192.168.1.140_
 - OneDrive (I used Office 365 personal wiht 1TB OneDrive storage)
-- Putty (PC/Mac-Crossover) or any SSH client able to do the port forwarding (tunelling)
+- Putty (PC) or any SSH client able to do the port forwarding (tunelling). I use Putty running under CrossOver 24 for MacOS
 - Understaning that with Microsoft thinks can be complicated... 
 
-
+# Let's start
 1. RClone - Installing & Configuration part 1
     - open Proxmox shell and enter:
       ```
@@ -38,6 +38,7 @@ I acknowledge that the solution presented is far from being perfect, but it work
     Edit advance config? - select No
     Use web browser to automatically authenticate rclone with remote? - select Yes (default)
     ```
+2. OneDrive autorization voa Putty & WebBrowser
     - you should get an error as below as the rclone cannot resolve localpage under ___http://localhost:53682/___
     ```
     NOTICE: Make sure your Redirect URL is set to "http://localhost:53682/" in your custom config.
@@ -45,9 +46,13 @@ I acknowledge that the solution presented is far from being perfect, but it work
     NOTICE: Log in and authorize rclone for access
     NOTICE: Waiting for code...
     ```
+    - create a tunnel using ***Putty***
+    - <img src="https://github.com/user-attachments/assets/09b37dec-934b-40d5-8792-c08df6eda48b" width="400" height="400"/>
+    - <img src="https://github.com/user-attachments/assets/fb51dccc-16b0-48cd-9586-1ab9311967ed" width="400" height="400"/>
+    - <img src="https://github.com/user-attachments/assets/98222d6f-7f2c-4775-8b00-eb5a57e166b4" width="400" height="400"/>
 
 
-2. OneDrive autorization voa Putty & WebBrowser
+
 3. RClone - Installing & Configuration part 2
 4. First tests 
 5. Mounting OneDrive as /mnt/OneDrive (includes missing dependences installation - fuse3)
