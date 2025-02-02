@@ -8,13 +8,45 @@ I acknowledge that the solution presented is far from being perfect, but it work
 
 # What you need?
 - Proxmox server 8+ running(did not check it this work on the 7th version)
-- Proxmox'S server IP adress (local)
+- Proxmox'S server IP adress (local) ***PROXMOX_IP*** for example _192.168.10.50_
 - OneDrive (I used Office 365 personal wiht 1TB OneDrive storage)
 - Putty (PC/Mac-Crossover) or any SSH client able to do the port forwarding (tunelling)
 - Understaning that with Microsoft thinks can be complicated... 
 
 
 1. RClone - Installing & Configuration part 1
+    - open Proxmox shell and enter:
+      ```
+      curl https://rclone.org/install.sh | bash
+      ```
+    - once done run the following:
+      ```
+      rclone config
+      ```
+    - select ***n*** for remote
+    - provide name (for example as below) - in this example I use ***onedrivesync***
+      ```
+      onedrivesync
+      ```
+    - use the followings:
+    ```
+    select 36 (Microsoft OneDrive)
+    client_id - leave blank/hit enter
+    client_secret - leave blank/hit enter
+    client_id - type global
+    tenant - leave blank/hit enter
+    Edit advance config? - select No
+    Use web browser to automatically authenticate rclone with remote? - select Yes (default)
+    ```
+    - you should get an error as below as the rclone cannot resolve localpage under ___http://localhost:53682/___
+    ```
+    NOTICE: Make sure your Redirect URL is set to "http://localhost:53682/" in your custom config.
+    ERROR : Failed to open browser automatically (exec: "xdg-open": executable file not found in $PATH) - please go to the following link: http://127.0.0.1:53682/auth?state=xxxxxxxxxxxxxxxxxx
+    NOTICE: Log in and authorize rclone for access
+    NOTICE: Waiting for code...
+    ```
+
+
 2. OneDrive autorization voa Putty & WebBrowser
 3. RClone - Installing & Configuration part 2
 4. First tests 
