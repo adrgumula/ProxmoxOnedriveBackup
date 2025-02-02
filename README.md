@@ -47,9 +47,9 @@ I acknowledge that the solution presented is far from being perfect, but it work
     NOTICE: Waiting for code...
     ```
     - create a tunnel using ***Putty***
-    - <img src="https://github.com/user-attachments/assets/09b37dec-934b-40d5-8792-c08df6eda48b" width="400" height="400"/>
-    - <img src="https://github.com/user-attachments/assets/fb51dccc-16b0-48cd-9586-1ab9311967ed" width="400" height="400"/>
-    - <img src="https://github.com/user-attachments/assets/98222d6f-7f2c-4775-8b00-eb5a57e166b4" width="400" height="400"/>
+    - <img src="https://github.com/user-attachments/assets/09b37dec-934b-40d5-8792-c08df6eda48b" width="50%" height="50%"/>
+    - <img src="https://github.com/user-attachments/assets/fb51dccc-16b0-48cd-9586-1ab9311967ed" width="50%" height="50%"/>
+    - <img src="https://github.com/user-attachments/assets/98222d6f-7f2c-4775-8b00-eb5a57e166b4" width="50%" height="50%"/>
 
 
 
