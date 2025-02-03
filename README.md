@@ -11,6 +11,7 @@ I acknowledge that the solution presented is far from being perfect, but it work
 - Proxmox server IP address (local) ***PROXMOX_IP*** for example _192.168.1.140_
 - OneDrive (I used Office 365 personal wiht 1TB OneDrive storage)
 - [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) (PC) or any SSH client able to do the port forwarding (tunelling). I use Putty running under CrossOver 24 for MacOS
+
 > [!NOTE] 
 > Understand, with Microsoft things can get complicated.. 
 
@@ -59,10 +60,21 @@ I acknowledge that the solution presented is far from being perfect, but it work
         NOTICE: Log in and authorize rclone for access
         NOTICE: Waiting for code...
         ```
-    - create a tunnel using ***Putty***
-    - <img src="https://github.com/user-attachments/assets/09b37dec-934b-40d5-8792-c08df6eda48b" width="50%" height="50%"/>
-    - <img src="https://github.com/user-attachments/assets/fb51dccc-16b0-48cd-9586-1ab9311967ed" width="50%" height="50%"/>
-    - <img src="https://github.com/user-attachments/assets/98222d6f-7f2c-4775-8b00-eb5a57e166b4" width="50%" height="50%"/>
+    - create a tunnel using ***Putty***:
+        - Enter ***Host name (or IP address):*** for example: ```192.168.1.140 port:22``` and go to ```Connection -> SSH -> Tunnels```
+        - <img src="https://github.com/user-attachments/assets/09b37dec-934b-40d5-8792-c08df6eda48b" width="35%" height="35%"/>
+        - Enter ```53682``` as ***Source Port*** and ```127.0.0.1``` as ***Destination*** then click ***Add***
+        - <img src="https://github.com/user-attachments/assets/fb51dccc-16b0-48cd-9586-1ab9311967ed" width="35%" height="35%"/>
+        - Click ***Open*** at the buttom of the window
+        - Click ***Accept*** of ***Putty Security Alert*** Window
+        - <img src="https://github.com/user-attachments/assets/98222d6f-7f2c-4775-8b00-eb5a57e166b4" width="35%" height="35%"/>
+        - Here you should see the login window to Microsoft 365 _(or whatever it's called at the moment you're reading this ;) )_
+        - Do login to Microsoft 365
+        - Click ***Allow*** on the ***Allow related Microsoft websites to share the cookies and website data?***
+        - <img src="https://github.com/user-attachments/assets/837c3768-7de5-4022-abc9-1562550c9faf" width="35%" height="35%"/>
+        - ***Accept*** on the popup windows ***Let this app access your info? (1 of 1 apps)***
+        - <img src="https://github.com/user-attachments/assets/ee9dca23-3ad2-493f-9632-712088b03edf" width="25%" height="25%"/>
+        - Close the ***Putty*** (tunel) & return to main Proxmox shell
 
 
 
