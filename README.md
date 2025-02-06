@@ -1,4 +1,4 @@
-### ProxmoxOnedriveBackup
+# Proxmox OneDrive Backup
 This is my experience (mostly successful) with Proxmox version 8.3.3 in connecting it to Microsoft OneDrive (e.g., from Microsoft 365) as additional storage for backups, ISOs, templates, and more. 
 The solution uses [RCLONE](https://rclone.org) package and covers the installation, configuration, connection to OneDrive, and synchronization process between Proxmox and OneDrive.
 I acknowledge that the solution presented is far from being perfect, but it works. If you have any suggestions for improvements, feel free to contact me. 
@@ -6,7 +6,7 @@ I acknowledge that the solution presented is far from being perfect, but it work
 
 ([1) md files example](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax))
 
-# What you need?
+## What you need?
 - Proxmox server 8+ (should works on Proxmox 7 as well)
 - Proxmox server IP address (local) ***PROXMOX_IP*** for example _192.168.1.140_
 - OneDrive (I used Office 365 personal wiht 1TB OneDrive storage)
@@ -15,7 +15,7 @@ I acknowledge that the solution presented is far from being perfect, but it work
 > [!NOTE] 
 > Understand, with Microsoft things can get complicated.. 
 
-# Let's start
+## Let's start
 1. RClone - Installing & Configuration part 1
     - open Proxmox Node's shell and enter:
       ```
