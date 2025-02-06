@@ -17,7 +17,7 @@ I acknowledge that the solution presented is far from being perfect, but it work
 
 # Let's start
 1. RClone - Installing & Configuration part 1
-    - open Proxmox shell and enter:
+    - open Proxmox Node's shell and enter:
       ```
       curl https://rclone.org/install.sh | bash
       ```
@@ -62,37 +62,52 @@ I acknowledge that the solution presented is far from being perfect, but it work
         ```
     - create a tunnel using ***Putty***:
         - Enter ***Host name (or IP address):*** for example: ```192.168.1.140 port:22``` and go to ```Connection -> SSH -> Tunnels```
-        - <img src="https://github.com/user-attachments/assets/09b37dec-934b-40d5-8792-c08df6eda48b" width="35%" height="35%"/>
+            - <img src="https://github.com/user-attachments/assets/09b37dec-934b-40d5-8792-c08df6eda48b" width="35%" height="35%"/>
         - Enter ```53682``` as ***Source Port*** and ```127.0.0.1``` as ***Destination*** then click ***Add***
-        - <img src="https://github.com/user-attachments/assets/fb51dccc-16b0-48cd-9586-1ab9311967ed" width="35%" height="35%"/>
+            - <img src="https://github.com/user-attachments/assets/fb51dccc-16b0-48cd-9586-1ab9311967ed" width="35%" height="35%"/>
         - Click ***Open*** at the buttom of the window
         - Click ***Accept*** of ***Putty Security Alert*** Window
-        - <img src="https://github.com/user-attachments/assets/98222d6f-7f2c-4775-8b00-eb5a57e166b4" width="35%" height="35%"/>
+            - <img src="https://github.com/user-attachments/assets/98222d6f-7f2c-4775-8b00-eb5a57e166b4" width="35%" height="35%"/>
         - Here you should see the login window to Microsoft 365 _(or whatever it's called at the moment you're reading this ;) )_
         - Do login to Microsoft 365
         - Click ***Allow*** on the ***Allow related Microsoft websites to share the cookies and website data?***
-        - <img src="https://github.com/user-attachments/assets/837c3768-7de5-4022-abc9-1562550c9faf" width="35%" height="35%"/>
+            - <img src="https://github.com/user-attachments/assets/837c3768-7de5-4022-abc9-1562550c9faf" width="35%" height="35%"/>
         - ***Accept*** on the popup windows ***Let this app access your info? (1 of 1 apps)***
-        - <img src="https://github.com/user-attachments/assets/ee9dca23-3ad2-493f-9632-712088b03edf" width="25%" height="25%"/>
+            - <img src="https://github.com/user-attachments/assets/ee9dca23-3ad2-493f-9632-712088b03edf" width="25%" height="25%"/>
         - Close the ***Putty*** (tunel) & return to main Proxmox shell
 
 
 
 3. RClone - Installing & Configuration part 2
-4. First tests 
-5. Mounting OneDrive as /mnt/OneDrive (includes missing dependences installation - fuse3)
-6. Final tests
+   - Select `1`
+       - <img src="https://github.com/user-attachments/assets/ffc6c1fb-c698-4387-9ec8-8c3082852e5a" width="35%" height="35%"/>
+   - Select `7`
+       - <img src="https://github.com/user-attachments/assets/f536b803-44a4-4da5-861f-33deac1fa1a3" width="35%" height="35%"/>
+   - Select `3`, Select "y" ***Yes - default***
+       - <img src="https://github.com/user-attachments/assets/d095ee1e-554a-4ae5-9578-52e7b14ca474" width="35%" height="35%"/>
+   - Select `y` ***Yes***
+       - <img src="https://github.com/user-attachments/assets/79aa228e-e07f-454a-9b76-96f78579c38e" width="35%" height="35%"/>
+   - Select `q` ***Quit config***
+       - <img src="https://github.com/user-attachments/assets/74528819-2af4-4d6b-8062-71b2c4a8be49" width="35%" height="35%"/>
 
 
+5. First tests
+    - go to ***Proxmox Node's shell***
+    - To list the contecnt of the OneDrive's root folder type following (dont forget to add : at the end!):
+        - ```rclone lsd onedrivesync:```
+7. Mounting OneDrive as /mnt/OneDrive (includes missing dependences installation - fuse3)
+    - It time to create a folder where you'll your OneDrive content:
+        - ```cd /mnt```
+        - ```mkdir onedrive```
+        - ```cd onedrive```
+    - the next step requires ***fuse*** to be installed. To do so just type
+        - ```apt-get install fuse3 libfuse2```
+    - let connect ```/mnt/onedrive``` with online ***OneDrvie*** by entering following:
+        - ```rclone mount onedrivesync: /mnt/onedrive --vfs-cache-mode writes --daemon --poll-interval 5m```
+    - Type following to check if all was connected properly (if ok you should get folder OneDrive content displayed):
+         - ```ls /mnt/onedrive```
+8. Addeding OneDrive drive to Proxmox:
+    - In Proxmox go to your ***DataCenter*** -> ***Storage*** and select ```Add -> Directory```
+    - Add ```ID```, ```Directory``` path and select ***Content*** as shown below:
+    - <img src="https://github.com/user-attachments/assets/6bf41682-791c-4b58-82c8-29e0b0fad89e" width="35%" height="35%"/>
 
-> [!TIP]
-> Helpful advice for doing things better or more easily.
-
-> [!IMPORTANT]
-> Key information users need to know to achieve their goal.
-
-> [!WARNING]
-> Urgent info that needs immediate user attention to avoid problems.
-
-> [!CAUTION]
-> Advises about risks or negative outcomes of certain actions.
