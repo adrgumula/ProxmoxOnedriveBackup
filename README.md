@@ -97,15 +97,27 @@ I acknowledge that the solution presented is far from being perfect, but it work
         - ```rclone lsd onedrivesync:```
 7. Mounting OneDrive as /mnt/OneDrive (includes missing dependences installation - fuse3)
     - It time to create a folder where you'll your OneDrive content:
-        - ```cd /mnt```
-        - ```mkdir onedrive```
-        - ```cd onedrive```
+        - ```
+          cd /mnt
+          ```
+        - ```
+          mkdir onedrive
+          ```
+        - ```
+          cd onedrive
+          ```
     - the next step requires ***fuse*** to be installed. To do so just type
-        - ```apt-get install fuse3 libfuse2```
+        - ```
+          apt-get install fuse3 libfuse2
+          ```
     - let connect ```/mnt/onedrive``` with online ***OneDrvie*** by entering following:
-        - ```rclone mount onedrivesync: /mnt/onedrive --vfs-cache-mode writes --daemon --poll-interval 5m```
+        - ```
+          rclone mount onedrivesync: /mnt/onedrive --vfs-cache-mode writes --daemon --poll-interval 5m
+          ```
     - Type following to check if all was connected properly (if ok you should get folder OneDrive content displayed):
-         - ```ls /mnt/onedrive```
+         - ```
+           ls /mnt/onedrive
+           ```
 8. Addeding OneDrive drive to Proxmox:
     - In Proxmox go to your ***DataCenter*** -> ***Storage*** and select ```Add -> Directory```
     - Add ```ID```, ```Directory``` path and select ***Content*** as shown below:
