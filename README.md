@@ -94,7 +94,9 @@ I acknowledge that the solution presented is far from being perfect, but it work
 5. First tests
     - go to ***Proxmox Node's shell***
     - To list the contecnt of the OneDrive's root folder type following (dont forget to add : at the end!):
-        - ```rclone lsd onedrivesync:```
+        - ```
+          rclone lsd onedrivesync:
+          ```
 7. Mounting OneDrive as /mnt/OneDrive (includes missing dependences installation - fuse3)
     - It time to create a folder where you'll your OneDrive content:
         - ```
@@ -119,7 +121,7 @@ I acknowledge that the solution presented is far from being perfect, but it work
            ls /mnt/onedrive
            ```
 8. Addeding OneDrive drive to Proxmox:
-    - In Proxmox go to your ***DataCenter*** -> ***Storage*** and select ```Add -> Directory```
-    - Add ```ID```, ```Directory``` path and select ***Content*** as shown below:
+    - In Proxmox go to your ***DataCenter*** -> ***Storage*** and select ***Add -> Directory***
+    - Add ***ID***, ***Directory*** path and select ***Content*** as shown below:
     - <img src="https://github.com/user-attachments/assets/6bf41682-791c-4b58-82c8-29e0b0fad89e" width="35%" height="35%"/>
 
