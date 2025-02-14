@@ -126,8 +126,63 @@ I acknowledge that the solution presented is far from being perfect, but it work
     - <img src="https://github.com/user-attachments/assets/6bf41682-791c-4b58-82c8-29e0b0fad89e" width="35%" height="35%"/>
 
 9. Automoving files from the localdrive to OneDrive with 5 minutes intervals:
-    - TODO
-    - TODO
-    - TODO
-    - TODO
-    - TODO     
+    - Go to Promox shell and enter:
+      - ```
+        nano /usr/local/bin/rclone_auto_move.sh
+        ```
+   - past there following script (you can tune ***WATCH_DIR*** & ***DEST_DIR*** folders as well as ***sleep 300*** if you've picked up something different). After editing press Ctrl+X (Windows) or Control+X (Mac) then Y, then Enter to save & exit.
+      - ```
+        #!/bin/bash
+
+        WATCH_DIR="/mnt/onedrive"                   # Change to your source folder
+        DEST_DIR="opendrivesync:Proxmox-backups"    # Change to your RClone destination
+
+        inotifywait -m -e close_write --format "%w%f" "$WATCH_DIR" | while read FILE
+        do
+            sleep 300                              # Wait 300s = 5 minutes
+            rclone move "$FILE" "$DEST_DIR" --progress
+        done
+        ```     
+    - Install missing dependeces ***inotifywait***
+      - ```
+        apt install -y inotify-tools
+        ```
+    - Make above script executable:
+      - ```
+        chmod +x /usr/local/bin/rclone_auto_move.sh
+        ```
+    - Run the Script as a Background Service. To ensure the script runs automatically, create a systemd service. Create a new systemd unit file:
+      - ```
+        nano /etc/systemd/system/rclone-auto-move.service
+        ```
+    - and past this inside (save & exit)
+      - ```
+        [Unit]
+        Description=Auto move files to cloud via RClone
+        After=network-online.target
+        
+        [Service]
+        Type=simple
+        ExecStart=/usr/local/bin/rclone_auto_move.sh
+        Restart=always
+        User=root
+        
+        [Install]
+        WantedBy=multi-user.target
+        ```
+    - Reload systemd to apply change
+      - ```
+        systemctl daemon-reload
+        ```
+    - Enable the service to start on boot:
+      - ```
+        systemctl enable rclone-auto-move.service
+        ```
+    - Start the service now:
+      - ```
+        systemctl start rclone-auto-move.service
+        ```
+    - Check if it’s running:
+      - ```
+        systemctl status rclone-auto-move.service
+        ```       
