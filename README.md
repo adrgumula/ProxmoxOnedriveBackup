@@ -134,8 +134,8 @@ I acknowledge that the solution presented is far from being perfect, but it work
       - ```
         #!/bin/bash
 
-        WATCH_DIR="/mnt/onedrive"                   # Change to your source folder
-        DEST_DIR="opendrivesync:Proxmox-backups"    # Change to your RClone destination
+        WATCH_DIR="/mnt/onedrive"    # Change to your source folder
+        DEST_DIR="opendrivesync:"    # Change to your RClone destination
 
         inotifywait -m -e close_write --format "%w%f" "$WATCH_DIR" | while read FILE
         do
