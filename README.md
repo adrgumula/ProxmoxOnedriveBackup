@@ -130,17 +130,21 @@ I acknowledge that the solution presented is far from being perfect, but it work
       - ```
         nano /usr/local/bin/rclone_auto_move.sh
         ```
-   - past there following script (you can tune ***WATCH_DIR*** & ***DEST_DIR*** folders as well as ***sleep 300*** if you've picked up something different). After editing press Ctrl+X (Windows) or Control+X (Mac) then Y, then Enter to save & exit.
+   - past there following script (you can tune ***WATCH_DIR*** & ***DEST_DIR*** or your **SUB_FOLDER*** folders as well as ***sleep 1800*** if you've picked up something different). After editing press Ctrl+X (Windows) or Control+X (Mac) then Y, then Enter to save & exit. Note: Comment / Uncomment specific part of the scipt below
       - ```
         #!/bin/bash
 
-        WATCH_DIR="/mnt/onedrive"    # Change to your source folder
-        DEST_DIR="opendrivesync:"    # Change to your RClone destination
+        WATCH_DIR="/mnt/onedrive"                       # Change to your source folder
+        DEST_DIR="opendrivesync:"                       # Change to your RClone destination
+        WATCH_SUBDIR="/mnt/onedrive/proxmod-backups"    # Change to your source sub-folder
+        DEST_SUBDIR="opendrivesync:proxmox-backups"     # Change to your RClone destination (subfolder)
 
-        inotifywait -m -e close_write --format "%w%f" "$WATCH_DIR" | while read FILE
+        inotifywait -m -e close_write --format "%w%f" "$WATCH_SUBDIR" | while read FILE
+        #inotifywait -m -e close_write --format "%w%f" "$WATCH_DIR" | while read FILE
         do
-            sleep 300                              # Wait 300s = 5 minutes
-            rclone move "$FILE" "$DEST_DIR" --progress
+            sleep 1800                              # Wait 1800s = 30 minutes
+            #rclone move "$FILE" "$DEST_DIR" --progress
+            rclone move "$FILE" "$DEST_SUBDIR" --progress
         done
         ```     
     - Install missing dependeces ***inotifywait***
