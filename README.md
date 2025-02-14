@@ -125,3 +125,9 @@ I acknowledge that the solution presented is far from being perfect, but it work
     - Add ***ID***, ***Directory*** path and select ***Content*** as shown below:
     - <img src="https://github.com/user-attachments/assets/6bf41682-791c-4b58-82c8-29e0b0fad89e" width="35%" height="35%"/>
 
+9. Automoving files from the localdrive to OneDrive with 5 minutes intervals:
+    - TODO
+    - TODO
+    - TODO
+    - TODO
+    - TODO     
