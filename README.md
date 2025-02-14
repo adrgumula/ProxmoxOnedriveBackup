@@ -185,4 +185,7 @@ I acknowledge that the solution presented is far from being perfect, but it work
     - Check if it’s running:
       - ```
         systemctl status rclone-auto-move.service
-        ```       
+        ```
+    - if all went fine you should get simiar message:
+      - <img src="https://github.com/user-attachments/assets/da4ccebf-9e15-47dc-84f3-8a3b47aefd2d" width="35%" height="35%"/>
+
