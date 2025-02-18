@@ -143,8 +143,8 @@ I acknowledge that the solution presented is far from being perfect, but it work
         #inotifywait -m -e close_write --format "%w%f" "$WATCH_DIR" | while read FILE
         do
             sleep 1800                              # Wait 1800s = 30 minutes
-            #rclone move "$FILE" "$DEST_DIR" --progress
-            rclone move "$FILE" "$DEST_SUBDIR" --progress
+            #rclone sync "$FILE" "$DEST_DIR" --progress --delete-after
+            rclone sync "$FILE" "$DEST_SUBDIR" --progress --delete-after
         done
         ```     
     - Install missing dependeces ***inotifywait***
